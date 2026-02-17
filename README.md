@@ -9,7 +9,7 @@ We recommend using [uv][] to install.
 
 ```sh
 uv venv syntactic
-source syntactic/bin/activate
+source 'syntactic/bin/activate'
 uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
 ```
 
