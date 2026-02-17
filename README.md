@@ -7,7 +7,7 @@ Make syntactically valid names out of strings.
 This is a Python package.
 
 ```sh
-uv pip install syntactic
+uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
 ```
 
 ## Usage
