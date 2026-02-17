@@ -5,6 +5,7 @@ Make syntactically valid names out of strings.
 ## Installation
 
 This is a Python package.
+We recommend using [uv][] to install.
 
 ```sh
 uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
@@ -81,3 +82,5 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 | `sentence_case`   | `sentenceCase`   | Convert to sentence case            |
 | `autopad_zeros`   | `autopadZeros`   | Zero-pad integers/strings           |
 | `syntactic_rename`| `syntacticRename`| Rename files with syntactic naming  |
+
+[uv]: https://docs.astral.sh/uv/
