@@ -1,6 +1,6 @@
 # syntactic
 
-Make syntactically valid names out of character vectors.
+Make syntactically valid names out of strings.
 
 ## Installation
 
