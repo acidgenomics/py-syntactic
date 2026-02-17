@@ -4,7 +4,7 @@ Make syntactically valid names out of strings.
 
 ## Installation
 
-This is a Python package.
+This is a [Python][] package.
 We recommend using [uv][] to install.
 
 ```sh
@@ -83,4 +83,5 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 | `autopad_zeros`   | `autopadZeros`   | Zero-pad integers/strings           |
 | `syntactic_rename`| `syntacticRename`| Rename files with syntactic naming  |
 
+[python]: https://www.python.org/
 [uv]: https://docs.astral.sh/uv/
