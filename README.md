@@ -79,7 +79,3 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 | `sentence_case`   | `sentenceCase`   | Convert to sentence case            |
 | `autopad_zeros`   | `autopadZeros`   | Zero-pad integers/strings           |
 | `syntactic_rename`| `syntacticRename`| Rename files with syntactic naming  |
-
-## License
-
-AGPL-3.0 (same as the original R package)
