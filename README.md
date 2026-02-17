@@ -2,12 +2,10 @@
 
 Make syntactically valid names out of character vectors.
 
-A Python port of the [R syntactic package](https://r.acidgenomics.com/packages/syntactic/) by [Acid Genomics](https://acidgenomics.com/).
-
 ## Installation
 
 ```sh
-pip install .
+uv pip install syntactic
 ```
 
 ## Usage
