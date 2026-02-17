@@ -8,8 +8,8 @@ This is a [Python][] package.
 We recommend using [uv][] to install.
 
 ```sh
-uv venv syntactic
-source 'syntactic/bin/activate'
+uv venv './.venv'
+source './.venv/bin/activate'
 uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
 ```
 
