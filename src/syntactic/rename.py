@@ -24,7 +24,7 @@ def _is_case_sensitive_fs(path: str = ".") -> bool:
         is_sensitive = not (os.path.exists(upper_path) and os.path.exists(lower_path))
         os.unlink(tmp_path)
         return is_sensitive
-    except OSError, PermissionError:
+    except (OSError, PermissionError):
         return platform.system() == "Linux"
 
 
