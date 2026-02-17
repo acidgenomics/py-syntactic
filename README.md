@@ -11,6 +11,11 @@ We recommend using [uv][] to install.
 uv venv './.venv'
 source './.venv/bin/activate'
 uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
+python3
+```
+
+```python
+import syntactic
 ```
 
 ## Usage
