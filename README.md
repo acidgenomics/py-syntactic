@@ -4,6 +4,8 @@ Make syntactically valid names out of character vectors.
 
 ## Installation
 
+This is a Python package.
+
 ```sh
 uv pip install syntactic
 ```
