@@ -155,7 +155,7 @@ def _execute_renames(
         else:
             tmp_path = os.path.join(
                 os.path.dirname(from_path),
-                f".tmp.{os.path.basename(from_path)}",
+                f"__tmp__{os.path.basename(from_path)}",
             )
             os.rename(from_path, tmp_path)
             os.rename(tmp_path, to_path)
