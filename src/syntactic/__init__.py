@@ -31,5 +31,3 @@ __all__ = [
     "syntactic_rename",
     "upper_camel_case",
 ]
-
-__version__ = "0.7.2"
