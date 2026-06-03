@@ -23,3 +23,12 @@ class TestMakeNames:
     def test_apostrophe_preserves_boundary(self) -> None:
         """Apostrophes become underscores, preserving word boundaries."""
         assert make_names(["5'3' bias"], smart=False) == ["X5_3_bias"]
+
+    def test_greek_characters(self) -> None:
+        assert make_names(["α", "β", "γ"]) == ["alpha", "beta", "gamma"]
+        assert make_names(["Δ", "Ε", "Ω"]) == ["Delta", "Epsilon", "Omega"]
+        assert make_names(["αβγ"]) == ["alphabetagamma"]
+
+    def test_smart_times(self) -> None:
+        assert make_names(["a*b"], smart=True) == ["a_times_b"]
+        assert make_names(["a*b"], smart=False) == ["a_b"]

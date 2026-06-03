@@ -133,7 +133,7 @@ def _compute_to_path(
     else:
         stem = _basename_sans_ext(from_path)
         ext = _file_ext(from_path)
-    if not stem or not stem[0].isalnum():
+    if not stem or stem[0] in (".", "_", "~", "$"):
         if not quiet:
             print(f"Skipping {from_path}")
         return from_path
@@ -204,6 +204,6 @@ def syntactic_rename(
         for f, t in zip(from_paths, to_paths, strict=False):
             if not quiet:
                 print(f"[dry-run] {f} -> {t}")
-        return {"from": [], "to": []}
+        return {"from": from_paths, "to": to_paths}
     _execute_renames(from_paths, to_paths, case_sensitive, quiet)
     return {"from": from_paths, "to": to_paths}
