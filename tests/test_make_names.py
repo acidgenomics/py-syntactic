@@ -24,6 +24,20 @@ class TestMakeNames:
         """Apostrophes become underscores, preserving word boundaries."""
         assert make_names(["5'3' bias"], smart=False) == ["X5_3_bias"]
 
+    def test_latin1_special_chars(self) -> None:
+        """Nordic and special Latin-1 chars not handled by NFKD normalization."""
+        assert make_names(["Ø"]) == ["O"]
+        assert make_names(["ø"]) == ["o"]
+        assert make_names(["Ð"]) == ["D"]
+        assert make_names(["ð"]) == ["d"]
+        assert make_names(["Þ"]) == ["TH"]
+        assert make_names(["þ"]) == ["th"]
+        assert make_names(["ß"]) == ["ss"]
+        assert make_names(["×"], smart=False) == ["X"]
+        assert make_names(["÷"], smart=False) == ["X"]
+        assert make_names(["×"], smart=True) == ["times"]
+        assert make_names(["÷"], smart=True) == ["slash"]
+
     def test_greek_characters(self) -> None:
         assert make_names(["α", "β", "γ"]) == ["alpha", "beta", "gamma"]
         assert make_names(["Δ", "Ε", "Ω"]) == ["Delta", "Epsilon", "Omega"]

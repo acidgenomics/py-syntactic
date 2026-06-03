@@ -30,10 +30,21 @@ def _transliterate(s: str) -> str:
     s = s.replace("\u00b5", "u")
     s = s.replace("\u03bc", "u")
     s = s.replace("&#181;", "u")
-    s = s.replace("\u00e6", "ae")
+    # Multi-character substitutions not handled by NFKD.
     s = s.replace("\u00c6", "AE")
-    s = s.replace("\u0153", "oe")
+    s = s.replace("\u00e6", "ae")
     s = s.replace("\u0152", "OE")
+    s = s.replace("\u0153", "oe")
+    s = s.replace("\u00de", "TH")
+    s = s.replace("\u00fe", "th")
+    s = s.replace("\u00df", "ss")
+    # Single-character substitutions not handled by NFKD.
+    s = s.replace("\u00d8", "O")
+    s = s.replace("\u00f8", "o")
+    s = s.replace("\u00d0", "D")
+    s = s.replace("\u00f0", "d")
+    s = s.replace("\u00d7", "*")
+    s = s.replace("\u00f7", "/")
     for greek, ascii_name in _GREEK_MAP.items():
         s = s.replace(greek, ascii_name)
     normalized = unicodedata.normalize("NFKD", s)
