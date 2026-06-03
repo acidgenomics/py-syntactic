@@ -60,3 +60,19 @@ class TestSnakeCase:
             "slash",
             "x",
         ]
+
+    def test_rna_types(self) -> None:
+        assert snake_case(["miRNA", "ncRNA", "piRNA", "rRNA", "mRNA"]) == [
+            "mirna",
+            "ncrna",
+            "pirna",
+            "rrna",
+            "mrna",
+        ]
+        assert snake_case(["miRNA_samples", "rRNA_depletion"]) == [
+            "mirna_samples",
+            "rrna_depletion",
+        ]
+
+    def test_truncation_fix(self) -> None:
+        assert snake_case(["ABCd5test"]) == ["ab_cd5test"]
