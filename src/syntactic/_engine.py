@@ -33,7 +33,7 @@ def _sanitize_acronyms(x: list[str]) -> list[str]:
         )
         # Mixed case RNA types.
         s = re.sub(
-            r"\b((?:mi|nc|pi|r)RNA)\b",
+            r"\b((?:mi|nc|pi|m|r)RNA)\b",
             lambda m: m.group(1).upper(),
             s,
         )
@@ -71,7 +71,7 @@ def _syntactic(
         s = re.sub(r"([A-Z0-9])([A-Z])([a-z]{2,})", r"\1_\2\3", s)
         # Handle remaining long acronym sequences.
         s = re.sub(
-            r"([A-Z0-9]{2,})([A-Z])([a-z]).+",
+            r"([A-Z0-9]{2,})([A-Z])([a-z].+)",
             lambda m: m.group(1) + "_" + m.group(2) + m.group(3),
             s,
         )

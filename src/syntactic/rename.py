@@ -17,11 +17,15 @@ from syntactic.case_conversion import (
 def _is_case_sensitive_fs(path: str = ".") -> bool:
     """Check if the file system is case-sensitive."""
     try:
-        with tempfile.NamedTemporaryFile(dir=path, prefix="TmP_", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile(
+            dir=path, prefix="TmP_", delete=False
+        ) as tmp:
             tmp_path = tmp.name
         upper_path = tmp_path.upper()
         lower_path = tmp_path.lower()
-        is_sensitive = not (os.path.exists(upper_path) and os.path.exists(lower_path))
+        is_sensitive = not (
+            os.path.exists(upper_path) and os.path.exists(lower_path)
+        )
         os.unlink(tmp_path)
         return is_sensitive
     except (OSError, PermissionError):
@@ -119,6 +123,7 @@ def _compute_to_path(
     from_path: str,
     naming_fn: Callable[..., list[str]],
     quiet: bool,
+    lowercase_ext: bool = False,
 ) -> str:
     """Compute the target path for a single source path."""
     dirname = os.path.dirname(from_path)
@@ -128,13 +133,17 @@ def _compute_to_path(
     else:
         stem = _basename_sans_ext(from_path)
         ext = _file_ext(from_path)
-    if not stem or not stem[0].isalnum():
+    if not stem or stem[0] in (".", "_", "~", "$"):
         if not quiet:
             print(f"Skipping {from_path}")
         return from_path
     result = naming_fn(stem, smart=True, prefix=False)
     new_stem = result[0] if isinstance(result, list) else result
-    basename = f"{new_stem}.{ext}" if ext else new_stem
+    if ext is not None:
+        final_ext = ext.lower() if lowercase_ext else ext
+        basename = f"{new_stem}.{final_ext}"
+    else:
+        basename = new_stem
     return os.path.join(dirname, basename)
 
 
@@ -167,6 +176,7 @@ def syntactic_rename(
     fun: str = "kebab_case",
     quiet: bool = False,
     dry_run: bool = False,
+    lowercase_ext: bool = False,
 ) -> dict[str, list[str]]:
     """Rename files and/or directories using a syntactic naming function.
 
@@ -177,17 +187,23 @@ def syntactic_rename(
         fun: Naming function to use.
         quiet: Suppress output messages.
         dry_run: Preview changes without renaming.
+        lowercase_ext: If True, also convert the file extension to lowercase.
     """
     naming_fn = _get_naming_function(fun)
     if isinstance(path, str):
         path = [path]
     from_paths = _resolve_from_paths(path, recursive)
-    case_sensitive = _is_case_sensitive_fs(os.path.dirname(from_paths[0]) if from_paths else ".")
-    to_paths = [_compute_to_path(fp, naming_fn, quiet) for fp in from_paths]
+    case_sensitive = _is_case_sensitive_fs(
+        os.path.dirname(from_paths[0]) if from_paths else "."
+    )
+    to_paths = [
+        _compute_to_path(fp, naming_fn, quiet, lowercase_ext)
+        for fp in from_paths
+    ]
     if dry_run:
         for f, t in zip(from_paths, to_paths, strict=False):
             if not quiet:
                 print(f"[dry-run] {f} -> {t}")
-        return {"from": [], "to": []}
+        return {"from": from_paths, "to": to_paths}
     _execute_renames(from_paths, to_paths, case_sensitive, quiet)
     return {"from": from_paths, "to": to_paths}
