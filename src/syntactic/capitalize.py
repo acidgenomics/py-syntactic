@@ -56,5 +56,5 @@ def sentence_case(obj: str | list[str], strict: bool = False) -> list[str]:
                     other_words.append(word)
                 else:
                     other_words.append(word.lower())
-        result.append(" ".join([first_word] + other_words))
+        result.append(" ".join([first_word, *other_words]))
     return result
