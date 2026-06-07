@@ -94,6 +94,7 @@ def dotted_case(
 def kebab_case(
     obj: str | list[str],
     smart: bool = True,
+    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to kebab-case."""
