@@ -3,7 +3,6 @@
 import re
 import unicodedata
 
-
 _GREEK_MAP: dict[str, str] = {
     "\u0391": "Alpha", "\u0392": "Beta", "\u0393": "Gamma",
     "\u0394": "Delta", "\u0395": "Epsilon", "\u0396": "Zeta",
