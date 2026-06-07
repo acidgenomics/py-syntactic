@@ -11,6 +11,7 @@ from syntactic.case_conversion import (
     snake_case,
     upper_camel_case,
 )
+from syntactic.make_dimnames import make_dimnames
 from syntactic.make_names import make_names
 from syntactic.make_words import make_label, make_title, make_words
 from syntactic.pad_zeros import autopad_zeros
@@ -22,6 +23,7 @@ __all__ = [
     "capitalize",
     "dotted_case",
     "kebab_case",
+    "make_dimnames",
     "make_label",
     "make_names",
     "make_title",
