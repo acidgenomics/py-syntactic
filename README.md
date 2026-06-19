@@ -90,5 +90,9 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 | `autopad_zeros`   | `autopadZeros`   | Zero-pad integers/strings           |
 | `syntactic_rename`| `syntacticRename`| Rename files with syntactic naming  |
 
+## License
+
+Apache-2.0 — Copyright 2026 Acid Genomics LLC — see [LICENSE](LICENSE).
+
 [python]: https://www.python.org/
 [uv]: https://docs.astral.sh/uv/
