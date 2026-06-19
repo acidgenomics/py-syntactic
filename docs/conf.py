@@ -2,7 +2,7 @@
 
 project = "syntactic"
 author = "Michael Steinbaugh"
-copyright = "Acid Genomics"  # noqa: A001
+copyright = "Acid Genomics"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
