@@ -4,22 +4,54 @@ import re
 import unicodedata
 
 _GREEK_MAP: dict[str, str] = {
-    "\u0391": "Alpha", "\u0392": "Beta", "\u0393": "Gamma",
-    "\u0394": "Delta", "\u0395": "Epsilon", "\u0396": "Zeta",
-    "\u0397": "Eta", "\u0398": "Theta", "\u0399": "Iota",
-    "\u039a": "Kappa", "\u039b": "Lambda", "\u039c": "Mu",
-    "\u039d": "Nu", "\u039e": "Xi", "\u039f": "Omicron",
-    "\u03a0": "Pi", "\u03a1": "Rho", "\u03a3": "Sigma",
-    "\u03a4": "Tau", "\u03a5": "Upsilon", "\u03a6": "Phi",
-    "\u03a7": "Chi", "\u03a8": "Psi", "\u03a9": "Omega",
-    "\u03b1": "alpha", "\u03b2": "beta", "\u03b3": "gamma",
-    "\u03b4": "delta", "\u03b5": "epsilon", "\u03b6": "zeta",
-    "\u03b7": "eta", "\u03b8": "theta", "\u03b9": "iota",
-    "\u03ba": "kappa", "\u03bb": "lambda", "\u03bc": "mu",
-    "\u03bd": "nu", "\u03be": "xi", "\u03bf": "omicron",
-    "\u03c0": "pi", "\u03c1": "rho", "\u03c2": "sigma",
-    "\u03c3": "sigma", "\u03c4": "tau", "\u03c5": "upsilon",
-    "\u03c6": "phi", "\u03c7": "chi", "\u03c8": "psi",
+    "\u0391": "Alpha",
+    "\u0392": "Beta",
+    "\u0393": "Gamma",
+    "\u0394": "Delta",
+    "\u0395": "Epsilon",
+    "\u0396": "Zeta",
+    "\u0397": "Eta",
+    "\u0398": "Theta",
+    "\u0399": "Iota",
+    "\u039a": "Kappa",
+    "\u039b": "Lambda",
+    "\u039c": "Mu",
+    "\u039d": "Nu",
+    "\u039e": "Xi",
+    "\u039f": "Omicron",
+    "\u03a0": "Pi",
+    "\u03a1": "Rho",
+    "\u03a3": "Sigma",
+    "\u03a4": "Tau",
+    "\u03a5": "Upsilon",
+    "\u03a6": "Phi",
+    "\u03a7": "Chi",
+    "\u03a8": "Psi",
+    "\u03a9": "Omega",
+    "\u03b1": "alpha",
+    "\u03b2": "beta",
+    "\u03b3": "gamma",
+    "\u03b4": "delta",
+    "\u03b5": "epsilon",
+    "\u03b6": "zeta",
+    "\u03b7": "eta",
+    "\u03b8": "theta",
+    "\u03b9": "iota",
+    "\u03ba": "kappa",
+    "\u03bb": "lambda",
+    "\u03bc": "mu",
+    "\u03bd": "nu",
+    "\u03be": "xi",
+    "\u03bf": "omicron",
+    "\u03c0": "pi",
+    "\u03c1": "rho",
+    "\u03c2": "sigma",
+    "\u03c3": "sigma",
+    "\u03c4": "tau",
+    "\u03c5": "upsilon",
+    "\u03c6": "phi",
+    "\u03c7": "chi",
+    "\u03c8": "psi",
     "\u03c9": "omega",
 }
 
@@ -106,9 +138,6 @@ def make_names(
     if smart:
         result = []
         for item in x:
-            # Note: apostrophes are NOT stripped here. They get converted to
-            # underscores by the [^alnum]->_ regex below, preserving word
-            # boundaries (e.g., "5'3' bias" -> "5_3__bias" -> "X5_3_bias").
             s = re.sub(r"&", "_and_", item)
             s = re.sub(r"\+", "_plus_", s)
             s = re.sub(r"\s-\s", " ", s)

@@ -5,11 +5,12 @@ import re
 
 def autopad_zeros(obj: int | str | list[int] | list[str]) -> list[str]:
     """Automatically pad numbers with leading zeros for consistent sorting."""
-    if isinstance(obj, (int, str)):
+    if isinstance(obj, int):
+        return autopad_zeros([str(obj)])
+    if isinstance(obj, str):
         obj = [obj]
     if all(isinstance(v, int) for v in obj):
-        strs = [str(v) for v in obj]
-        return autopad_zeros(strs)
+        return autopad_zeros([str(v) for v in obj])
     x = [str(v) for v in obj]
 
     int_pattern = r"^([0-9]+)$"
@@ -24,16 +25,18 @@ def autopad_zeros(obj: int | str | list[int] | list[str]) -> list[str]:
         width = max(len(s) for s in x)
         return [s.zfill(width) for s in x]
     elif is_left and not is_int:
-        matches = [re.match(left_pattern, s) for s in x]
-        nums = [m.group(1) for m in matches]
-        stems = [m.group(2) for m in matches]
+        left_matches = [re.match(left_pattern, s) for s in x]
+        assert all(m is not None for m in left_matches)
+        nums = [m.group(1) for m in left_matches if m is not None]
+        stems = [m.group(2) for m in left_matches if m is not None]
         width = max(len(n) for n in nums)
         padded = [n.zfill(width) for n in nums]
         return [p + s for p, s in zip(padded, stems, strict=False)]
     elif is_right:
-        matches = [re.match(right_pattern, s) for s in x]
-        stems = [m.group(1) for m in matches]
-        nums = [m.group(2) for m in matches]
+        right_matches = [re.match(right_pattern, s) for s in x]
+        assert all(m is not None for m in right_matches)
+        stems = [m.group(1) for m in right_matches if m is not None]
+        nums = [m.group(2) for m in right_matches if m is not None]
         width = max(len(n) for n in nums)
         padded = [n.zfill(width) for n in nums]
         return [s + p for s, p in zip(stems, padded, strict=False)]

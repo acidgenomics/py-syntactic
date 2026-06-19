@@ -4,18 +4,26 @@ Make syntactically valid names out of strings.
 
 ## Installation
 
-This is a [Python][] package.
+This is a [Python][] package hosted at [python.acidgenomics.com][].
 We recommend using [uv][] to install.
 
 ```sh
-uv venv './.venv'
-source './.venv/bin/activate'
-uv pip install 'git+https://github.com/acidgenomics/py-syntactic'
-python3
+uv pip install \
+    --index-url 'https://python.acidgenomics.com/simple/' \
+    syntactic
 ```
 
-```python
-import syntactic
+Or add the index to your project's `pyproject.toml`:
+
+```toml
+[[tool.uv.index]]
+url = "https://python.acidgenomics.com/simple/"
+```
+
+Then install:
+
+```sh
+uv add syntactic
 ```
 
 ## Usage
@@ -74,25 +82,27 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 
 ## Function Reference
 
-| Python Function    | R Equivalent     | Description                         |
-|-------------------|------------------|-------------------------------------|
-| `camel_case`      | `camelCase`      | Convert to lowerCamelCase           |
-| `upper_camel_case`| `upperCamelCase` | Convert to UpperCamelCase           |
-| `snake_case`      | `snakeCase`      | Convert to snake_case               |
-| `kebab_case`      | `kebabCase`      | Convert to kebab-case               |
-| `dotted_case`     | `dottedCase`     | Convert to dotted.case              |
-| `make_names`      | `makeNames`      | Make syntactically valid names      |
-| `make_words`      | `makeWords`      | Convert to human-readable words     |
-| `make_title`      | `makeTitle`      | Convert to title case               |
-| `make_label`      | `makeLabel`      | Convert to label (sentence) case    |
-| `capitalize`      | `capitalize`     | Capitalize first letter             |
-| `sentence_case`   | `sentenceCase`   | Convert to sentence case            |
-| `autopad_zeros`   | `autopadZeros`   | Zero-pad integers/strings           |
-| `syntactic_rename`| `syntacticRename`| Rename files with syntactic naming  |
+| Python Function    | R Equivalent      | Description                        |
+| ------------------ | ----------------- | ---------------------------------- |
+| `camel_case`       | `camelCase`       | Convert to lowerCamelCase          |
+| `upper_camel_case` | `upperCamelCase`  | Convert to UpperCamelCase          |
+| `snake_case`       | `snakeCase`       | Convert to snake_case              |
+| `kebab_case`       | `kebabCase`       | Convert to kebab-case              |
+| `dotted_case`      | `dottedCase`      | Convert to dotted.case             |
+| `make_names`       | `makeNames`       | Make syntactically valid names     |
+| `make_dimnames`    | `makeDimnames`    | Apply make_names to name vectors   |
+| `make_words`       | `makeWords`       | Convert to human-readable words    |
+| `make_title`       | `makeTitle`       | Convert to title case              |
+| `make_label`       | `makeLabel`       | Convert to label (sentence) case   |
+| `capitalize`       | `capitalize`      | Capitalize first letter of each word |
+| `sentence_case`    | `sentenceCase`    | Convert to sentence case           |
+| `autopad_zeros`    | `autopadZeros`    | Zero-pad integers/strings          |
+| `syntactic_rename` | `syntacticRename` | Rename files with syntactic naming |
 
 ## License
 
 Apache-2.0 — Copyright 2026 Acid Genomics LLC — see [LICENSE](LICENSE).
 
 [python]: https://www.python.org/
+[python.acidgenomics.com]: https://python.acidgenomics.com
 [uv]: https://docs.astral.sh/uv/

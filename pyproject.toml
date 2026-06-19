@@ -42,6 +42,7 @@ develop = [
 [project.urls]
 Homepage = "https://github.com/acidgenomics/py-syntactic"
 Repository = "https://github.com/acidgenomics/py-syntactic"
+Changelog = "https://github.com/acidgenomics/py-syntactic/blob/main/CHANGELOG.md"
 
 [tool.uv]
 package = true
@@ -93,10 +94,12 @@ override_SS05 = ['^Access ', '^Assess ', '^Process ']
 [tool.pyright]
 pythonVersion = "3.12"
 verboseOutput = true
+exclude = ["tests", ".venv"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --tb=short"
+pythonpath = ["src"]
 
 [tool.ruff]
 indent-width = 4
@@ -190,7 +193,7 @@ max-statements = 100
 python-version = "3.12"
 
 [tool.ty.src]
-exclude = [".venv", "**/__pycache__", "**/.*"]
+exclude = [".venv", "**/__pycache__", "**/.*", "tests"]
 
 [tool.ty.terminal]
 error-on-warning = true
