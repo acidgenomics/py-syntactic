@@ -191,6 +191,7 @@ max-statements = 100
 
 [tool.ty.environment]
 python-version = "3.12"
+python = ".venv"
 
 [tool.ty.src]
 exclude = [".venv", "**/__pycache__", "**/.*", "tests"]
