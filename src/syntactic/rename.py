@@ -17,15 +17,11 @@ from syntactic.case_conversion import (
 def _is_case_sensitive_fs(path: str = ".") -> bool:
     """Check if the file system is case-sensitive."""
     try:
-        with tempfile.NamedTemporaryFile(
-            dir=path, prefix="TmP_", delete=False
-        ) as tmp:
+        with tempfile.NamedTemporaryFile(dir=path, prefix="TmP_", delete=False) as tmp:
             tmp_path = tmp.name
         upper_path = tmp_path.upper()
         lower_path = tmp_path.lower()
-        is_sensitive = not (
-            os.path.exists(upper_path) and os.path.exists(lower_path)
-        )
+        is_sensitive = not (os.path.exists(upper_path) and os.path.exists(lower_path))
         os.unlink(tmp_path)
         return is_sensitive
     except (OSError, PermissionError):
@@ -193,13 +189,8 @@ def syntactic_rename(
     if isinstance(path, str):
         path = [path]
     from_paths = _resolve_from_paths(path, recursive)
-    case_sensitive = _is_case_sensitive_fs(
-        os.path.dirname(from_paths[0]) if from_paths else "."
-    )
-    to_paths = [
-        _compute_to_path(fp, naming_fn, quiet, lowercase_ext)
-        for fp in from_paths
-    ]
+    case_sensitive = _is_case_sensitive_fs(os.path.dirname(from_paths[0]) if from_paths else ".")
+    to_paths = [_compute_to_path(fp, naming_fn, quiet, lowercase_ext) for fp in from_paths]
     if dry_run:
         for f, t in zip(from_paths, to_paths, strict=False):
             if not quiet:

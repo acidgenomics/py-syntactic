@@ -5,7 +5,7 @@ from syntactic import upper_camel_case
 UNNAMED = [
     "%GC",
     "10uM",
-    "5'3' bias",
+    "5'-3' bias",
     "5prime",
     "G2M.Score",
     "hello world",

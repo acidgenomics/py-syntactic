@@ -38,7 +38,6 @@ def camel_case(
     obj: str | list[str],
     strict: bool = True,
     smart: bool = True,
-    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to lowerCamelCase."""
@@ -51,7 +50,6 @@ def upper_camel_case(
     obj: str | list[str],
     strict: bool = True,
     smart: bool = True,
-    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to UpperCamelCase (PascalCase)."""
@@ -69,7 +67,6 @@ def _snake_case(x: list[str], **kwargs: bool) -> list[str]:
 def snake_case(
     obj: str | list[str],
     smart: bool = True,
-    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to snake_case."""
@@ -81,7 +78,6 @@ def snake_case(
 def dotted_case(
     obj: str | list[str],
     smart: bool = True,
-    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to dotted.case."""
@@ -94,7 +90,6 @@ def dotted_case(
 def kebab_case(
     obj: str | list[str],
     smart: bool = True,
-    names: bool = True,
     prefix: bool = True,
 ) -> list[str]:
     """Convert strings to kebab-case."""

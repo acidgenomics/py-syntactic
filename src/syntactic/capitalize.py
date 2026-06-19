@@ -4,9 +4,9 @@ import re
 
 
 def capitalize(obj: str | list[str], strict: bool = False) -> list[str]:
-    """Capitalize the first letter of each string.
+    """Capitalize the first letter of each space-delimited word.
 
-    When strict=True, lowercases the remaining characters.
+    When strict=True, lowercases the remaining characters of each word.
     """
     if isinstance(obj, str):
         obj = [obj]
@@ -15,11 +15,16 @@ def capitalize(obj: str | list[str], strict: bool = False) -> list[str]:
         if not s:
             result.append(s)
             continue
-        first = s[0].upper()
-        tail = s[1:]
-        if strict:
-            tail = tail.lower()
-        result.append(first + tail)
+        words = s.split(" ")
+        out_words = []
+        for w in words:
+            if not w:
+                out_words.append(w)
+                continue
+            first = w[0].upper()
+            tail = w[1:].lower() if strict else w[1:]
+            out_words.append(first + tail)
+        result.append(" ".join(out_words))
     return result
 
 
