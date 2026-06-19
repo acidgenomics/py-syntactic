@@ -9,7 +9,7 @@ We recommend using [uv][] to install.
 
 ```sh
 uv pip install \
-    --index-url 'https://python.acidgenomics.com/simple/' \
+    --index-url 'https://python.acidgenomics.com/' \
     syntactic
 ```
 
@@ -17,7 +17,7 @@ Or add the index to your project's `pyproject.toml`:
 
 ```toml
 [[tool.uv.index]]
-url = "https://python.acidgenomics.com/simple/"
+url = "https://python.acidgenomics.com/"
 ```
 
 Then install:
@@ -94,7 +94,7 @@ syntactic_rename("/path/to/dir", fun="snake_case")
 | `make_words`       | `makeWords`       | Convert to human-readable words    |
 | `make_title`       | `makeTitle`       | Convert to title case              |
 | `make_label`       | `makeLabel`       | Convert to label (sentence) case   |
-| `capitalize`       | `capitalize`      | Capitalize first letter of each word |
+| `capitalize`       | `capitalize`      | Capitalize first letter per word   |
 | `sentence_case`    | `sentenceCase`    | Convert to sentence case           |
 | `autopad_zeros`    | `autopadZeros`    | Zero-pad integers/strings          |
 | `syntactic_rename` | `syntacticRename` | Rename files with syntactic naming |
