@@ -176,14 +176,21 @@ def syntactic_rename(
 ) -> dict[str, list[str]]:
     """Rename files and/or directories using a syntactic naming function.
 
-    Args:
-        path: A file path, directory path, or list of paths. When a single
-            directory is given, its contents are renamed.
-        recursive: If True, recurse into directories.
-        fun: Naming function to use.
-        quiet: Suppress output messages.
-        dry_run: Preview changes without renaming.
-        lowercase_ext: If True, also convert the file extension to lowercase.
+    Parameters
+    ----------
+    path : str or list of str
+        A file path, directory path, or list of paths. When a single
+        directory is given, its contents are renamed.
+    recursive : bool
+        If True, recurse into directories.
+    fun : str
+        Naming function to use.
+    quiet : bool
+        Suppress output messages.
+    dry_run : bool
+        Preview changes without renaming.
+    lowercase_ext : bool
+        If True, also convert the file extension to lowercase.
     """
     naming_fn = _get_naming_function(fun)
     if isinstance(path, str):
