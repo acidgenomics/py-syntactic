@@ -1,7 +1,4 @@
-"""Syntactic: Make syntactically valid names out of character vectors.
-
-A Python port of the R syntactic package by Acid Genomics.
-"""
+"""Syntactic: Make syntactically valid names out of strings."""
 
 from syntactic.capitalize import capitalize, sentence_case
 from syntactic.case_conversion import (

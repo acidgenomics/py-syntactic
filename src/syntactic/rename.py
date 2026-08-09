@@ -191,6 +191,25 @@ def syntactic_rename(
         Preview changes without renaming.
     lowercase_ext : bool
         If True, also convert the file extension to lowercase.
+
+    Returns
+    -------
+    dict
+        Mapping with keys ``"from"`` and ``"to"``, each a list of absolute
+        paths in matching order.
+
+    Examples
+    --------
+    >>> import tempfile
+    >>> d = tempfile.mkdtemp()
+    >>> path = f"{d}/mRNA Extraction.pdf"
+    >>> _ = open(path, "w").close()
+    >>> result = syntactic_rename(path, fun="kebab_case", quiet=True)
+    >>> result["to"][0].endswith("mrna-extraction.pdf")
+    True
+    >>> import os
+    >>> os.remove(result["to"][0])
+    >>> os.rmdir(d)
     """
     naming_fn = _get_naming_function(fun)
     if isinstance(path, str):

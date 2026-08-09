@@ -40,7 +40,34 @@ def camel_case(
     smart: bool = True,
     prefix: bool = True,
 ) -> list[str]:
-    """Convert strings to lowerCamelCase."""
+    """Convert strings to lowerCamelCase.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    strict : bool
+        Enforce strict name sanitization. When ``True``, this does not allow
+        the return of any capitalized acronyms; e.g. "RNA" becomes "Rna".
+    smart : bool
+        Handle complicated special cases, such as mixed case acronyms,
+        plus/minus, and percentages.
+    prefix : bool
+        Prepend an "x" character if the string begins with a syntactically
+        invalid character, such as a number.
+
+    Returns
+    -------
+    list of str
+        Strings converted to lowerCamelCase.
+
+    Examples
+    --------
+    >>> camel_case(["human genomeVersion", "sampleID"])
+    ['humanGenomeVersion', 'sampleId']
+    >>> camel_case(["sampleID"], strict=False)
+    ['sampleID']
+    """
     if isinstance(obj, str):
         obj = [obj]
     return _camel_case(x=list(obj), format="lower", strict=strict, smart=smart, prefix=prefix)
@@ -52,7 +79,32 @@ def upper_camel_case(
     smart: bool = True,
     prefix: bool = True,
 ) -> list[str]:
-    """Convert strings to UpperCamelCase (PascalCase)."""
+    """Convert strings to UpperCamelCase (PascalCase).
+
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    strict : bool
+        Enforce strict name sanitization. When ``True``, this does not allow
+        the return of any capitalized acronyms; e.g. "RNA" becomes "Rna".
+    smart : bool
+        Handle complicated special cases, such as mixed case acronyms,
+        plus/minus, and percentages.
+    prefix : bool
+        Prepend an "X" character if the string begins with a syntactically
+        invalid character, such as a number.
+
+    Returns
+    -------
+    list of str
+        UpperCamelCase string(s).
+
+    Examples
+    --------
+    >>> upper_camel_case(["human_genome_version", "sample_id"])
+    ['HumanGenomeVersion', 'SampleId']
+    """
     if isinstance(obj, str):
         obj = [obj]
     return _camel_case(x=list(obj), format="upper", strict=strict, smart=smart, prefix=prefix)
@@ -69,7 +121,29 @@ def snake_case(
     smart: bool = True,
     prefix: bool = True,
 ) -> list[str]:
-    """Convert strings to snake_case."""
+    """Convert strings to snake_case.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    smart : bool
+        Handle complicated special cases, such as mixed case acronyms,
+        plus/minus, and percentages.
+    prefix : bool
+        Prepend an "x" character if the string begins with a syntactically
+        invalid character, such as a number.
+
+    Returns
+    -------
+    list of str
+        Strings converted to snake_case.
+
+    Examples
+    --------
+    >>> snake_case(["human genomeVersion", "sampleID"])
+    ['human_genome_version', 'sample_id']
+    """
     if isinstance(obj, str):
         obj = [obj]
     return _snake_case(x=list(obj), smart=smart, prefix=prefix)
@@ -80,7 +154,29 @@ def dotted_case(
     smart: bool = True,
     prefix: bool = True,
 ) -> list[str]:
-    """Convert strings to dotted.case."""
+    """Convert strings to dotted.case.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    smart : bool
+        Handle complicated special cases, such as mixed case acronyms,
+        plus/minus, and percentages.
+    prefix : bool
+        Prepend an "x" character if the string begins with a syntactically
+        invalid character, such as a number.
+
+    Returns
+    -------
+    list of str
+        Strings converted to dotted.case.
+
+    Examples
+    --------
+    >>> dotted_case(["human genomeVersion", "sampleID"])
+    ['human.genome.version', 'sample.id']
+    """
     if isinstance(obj, str):
         obj = [obj]
     x = _snake_case(x=list(obj), smart=smart, prefix=prefix)
@@ -92,7 +188,29 @@ def kebab_case(
     smart: bool = True,
     prefix: bool = True,
 ) -> list[str]:
-    """Convert strings to kebab-case."""
+    """Convert strings to kebab-case.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    smart : bool
+        Handle complicated special cases, such as mixed case acronyms,
+        plus/minus, and percentages.
+    prefix : bool
+        Prepend an "x" character if the string begins with a syntactically
+        invalid character, such as a number.
+
+    Returns
+    -------
+    list of str
+        Strings converted to kebab-case.
+
+    Examples
+    --------
+    >>> kebab_case(["human genomeVersion", "sampleID"])
+    ['human-genome-version', 'sample-id']
+    """
     if isinstance(obj, str):
         obj = [obj]
     x = snake_case(obj, smart=smart, prefix=prefix)
