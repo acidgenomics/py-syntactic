@@ -10,6 +10,21 @@ def make_words(obj: str | list[str]) -> list[str]:
     """Convert variable names to human-readable word strings.
 
     Strings that already contain spaces are returned unmodified.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        Variable name(s) to convert.
+
+    Returns
+    -------
+    list of str
+        Human-readable word string(s).
+
+    Examples
+    --------
+    >>> make_words(["nGene", "log10GenesPerUMI"])
+    ['n gene', 'log10 genes per UMI']
     """
     if isinstance(obj, str):
         obj = [obj]
@@ -41,7 +56,23 @@ def make_words(obj: str | list[str]) -> list[str]:
 def make_title(obj: str | list[str]) -> list[str]:
     """Convert variable names to title-cased strings.
 
-    Applies makeWords then sentenceCase to each string.
+    Applies :func:`make_words` then :func:`~syntactic.capitalize.sentence_case`
+    to each string.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        Variable name(s) to convert.
+
+    Returns
+    -------
+    list of str
+        Title-cased string(s).
+
+    Examples
+    --------
+    >>> make_title(["nGene", "log10GenesPerUMI"])
+    ['N gene', 'Log10 genes per UMI']
     """
     if isinstance(obj, str):
         obj = [obj]
@@ -52,7 +83,22 @@ def make_title(obj: str | list[str]) -> list[str]:
 def make_label(obj: str | list[str]) -> list[str]:
     """Convert variable names to human-readable labels.
 
-    Applies makeWords and capitalizes the first letter of the result.
+    Applies :func:`make_words` and capitalizes the first letter of the result.
+
+    Parameters
+    ----------
+    obj : str or list of str
+        Variable name(s) to convert.
+
+    Returns
+    -------
+    list of str
+        Human-readable label(s).
+
+    Examples
+    --------
+    >>> make_label(["nGene", "log10GenesPerUMI"])
+    ['N gene', 'Log10 genes per UMI']
     """
     if isinstance(obj, str):
         obj = [obj]

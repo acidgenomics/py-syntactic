@@ -4,7 +4,30 @@ import re
 
 
 def autopad_zeros(obj: int | str | list[int] | list[str]) -> list[str]:
-    """Automatically pad numbers with leading zeros for consistent sorting."""
+    """Automatically pad numbers with leading zeros for consistent sorting.
+
+    Handles integers, purely numeric strings, and strings with a leading or
+    trailing numeric component (e.g. "A1", "1-EV"). Raises when only some
+    strings in the input match a numeric pattern, since no consistent padding
+    width can be inferred.
+
+    Parameters
+    ----------
+    obj : int, str, list of int, or list of str
+        Value(s) to pad.
+
+    Returns
+    -------
+    list of str
+        Zero-padded string(s).
+
+    Examples
+    --------
+    >>> autopad_zeros([1, 10, 100])
+    ['001', '010', '100']
+    >>> autopad_zeros(["A1", "B10", "C100"])
+    ['A001', 'B010', 'C100']
+    """
     if isinstance(obj, int):
         return autopad_zeros([str(obj)])
     if isinstance(obj, str):

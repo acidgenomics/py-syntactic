@@ -6,7 +6,25 @@ import re
 def capitalize(obj: str | list[str], strict: bool = False) -> list[str]:
     """Capitalize the first letter of each space-delimited word.
 
-    When strict=True, lowercases the remaining characters of each word.
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to capitalize.
+    strict : bool
+        Lowercase the remaining characters of each word. When ``False``
+        (default), only the first letter of each word is touched.
+
+    Returns
+    -------
+    list of str
+        Capitalized string(s).
+
+    Examples
+    --------
+    >>> capitalize(["fooBar", "HELLO"])
+    ['FooBar', 'HELLO']
+    >>> capitalize(["fooBar", "HELLO"], strict=True)
+    ['Foobar', 'Hello']
     """
     if isinstance(obj, str):
         obj = [obj]
@@ -35,7 +53,25 @@ def sentence_case(obj: str | list[str], strict: bool = False) -> list[str]:
     lowercased unless they appear to be acronyms (all-caps, mixed case with
     multiple uppercase letters, etc.).
 
-    When strict=True, forces ALL words (including first) to title/lowercase.
+    Parameters
+    ----------
+    obj : str or list of str
+        String(s) to convert.
+    strict : bool
+        Force ALL words (including the first) to title/lowercase, ignoring
+        acronym detection.
+
+    Returns
+    -------
+    list of str
+        Sentence-cased string(s).
+
+    Examples
+    --------
+    >>> sentence_case(["hello world", "FOO BAR"])
+    ['Hello world', 'FOO BAR']
+    >>> sentence_case(["hello world", "FOO BAR"], strict=True)
+    ['Hello world', 'Foo bar']
     """
     if isinstance(obj, str):
         obj = [obj]

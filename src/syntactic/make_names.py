@@ -129,6 +129,27 @@ def make_names(
     """Make syntactically valid names out of character vectors.
 
     Emulates R's syntactic::makeNames() behavior.
+
+    Parameters
+    ----------
+    obj : list of str or str
+        String(s) to sanitize.
+    unique : bool
+        Make the returned names unique by appending numeric suffixes to
+        duplicates.
+    smart : bool
+        Handle complicated special cases, such as ampersands, plus/minus,
+        percentages, and slashes, before generic sanitization.
+
+    Returns
+    -------
+    list of str
+        Syntactically valid name(s).
+
+    Examples
+    --------
+    >>> make_names(["%GC", "1st sample", "hello world"])
+    ['GC', 'X1st_sample', 'hello_world']
     """
     if isinstance(obj, str):
         obj = [obj]

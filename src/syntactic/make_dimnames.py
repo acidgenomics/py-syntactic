@@ -30,9 +30,9 @@ def make_dimnames(
     Examples
     --------
     >>> make_dimnames(rownames=["Row 1", "Row 2"], colnames=["My Col"])
-    {'rownames': ['row_1', 'row_2'], 'colnames': ['my_col']}
+    {'rownames': ['Row_1', 'Row_2'], 'colnames': ['My_Col']}
     >>> make_dimnames(colnames=["Bad Name!", "Good"])
-    {'rownames': None, 'colnames': ['bad_name', 'good']}
+    {'rownames': None, 'colnames': ['Bad_Name', 'Good']}
     """
     return {
         "rownames": make_names(rownames, unique=True) if rownames is not None else None,
