@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-09-01)
+
+### Changes
+
+- Rename the PyPI distribution to `acidgenomics-syntactic`. The import name is
+  unchanged: `import syntactic` still works. The bare `syntactic` name on PyPI
+  belongs to an unrelated project.
+- Publish to PyPI instead of `python.acidgenomics.com`.
+
 ## 0.1.0 (2026-06-19)
 
 ### Features

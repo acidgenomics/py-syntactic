@@ -3,7 +3,7 @@ build-backend = "uv_build"
 requires = ["uv_build>=0.11,<1"]
 
 [project]
-name = "syntactic"
+name = "acidgenomics-syntactic"
 version = "0.1.0"
 description = "Make syntactically valid names out of strings."
 readme = "README.md"
