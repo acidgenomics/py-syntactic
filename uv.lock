@@ -3,6 +3,46 @@ revision = 3
 requires-python = ">=3.12"
 
 [[package]]
+name = "acidgenomics-syntactic"
+version = "0.1.1"
+source = { editable = "." }
+
+[package.optional-dependencies]
+develop = [
+    { name = "bumpver" },
+    { name = "coverage" },
+    { name = "interrogate" },
+    { name = "pyright", extra = ["nodejs"] },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "ty" },
+    { name = "uv" },
+]
+docs = [
+    { name = "myst-parser" },
+    { name = "numpydoc" },
+    { name = "sphinx" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "bumpver", marker = "extra == 'develop'" },
+    { name = "coverage", marker = "extra == 'develop'" },
+    { name = "interrogate", marker = "extra == 'develop'" },
+    { name = "myst-parser", marker = "extra == 'docs'" },
+    { name = "numpydoc", marker = "extra == 'docs'" },
+    { name = "pyright", extras = ["nodejs"], marker = "extra == 'develop'" },
+    { name = "pytest", marker = "extra == 'develop'" },
+    { name = "pytest-cov", marker = "extra == 'develop'" },
+    { name = "ruff", marker = "extra == 'develop'" },
+    { name = "sphinx", marker = "extra == 'docs'" },
+    { name = "ty", marker = "extra == 'develop'" },
+    { name = "uv", marker = "extra == 'develop'" },
+]
+provides-extras = ["docs", "develop"]
+
+[[package]]
 name = "alabaster"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -723,46 +763,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/3b/44/6716b257b0aa6bfd5
 wheels = [
     { url = "https://files.pythonhosted.org/packages/52/a7/d2782e4e3f77c8450f727ba74a8f12756d5ba823d81b941f1b04da9d033a/sphinxcontrib_serializinghtml-2.0.0-py3-none-any.whl", hash = "sha256:6e2cb0eef194e10c27ec0023bfeb25badbbb5868244cf5bc5bdc04e4464bf331", size = 92072, upload-time = "2024-07-29T01:10:08.203Z" },
 ]
-
-[[package]]
-name = "syntactic"
-version = "0.1.0"
-source = { editable = "." }
-
-[package.optional-dependencies]
-develop = [
-    { name = "bumpver" },
-    { name = "coverage" },
-    { name = "interrogate" },
-    { name = "pyright", extra = ["nodejs"] },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "ty" },
-    { name = "uv" },
-]
-docs = [
-    { name = "myst-parser" },
-    { name = "numpydoc" },
-    { name = "sphinx" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "bumpver", marker = "extra == 'develop'" },
-    { name = "coverage", marker = "extra == 'develop'" },
-    { name = "interrogate", marker = "extra == 'develop'" },
-    { name = "myst-parser", marker = "extra == 'docs'" },
-    { name = "numpydoc", marker = "extra == 'docs'" },
-    { name = "pyright", extras = ["nodejs"], marker = "extra == 'develop'" },
-    { name = "pytest", marker = "extra == 'develop'" },
-    { name = "pytest-cov", marker = "extra == 'develop'" },
-    { name = "ruff", marker = "extra == 'develop'" },
-    { name = "sphinx", marker = "extra == 'docs'" },
-    { name = "ty", marker = "extra == 'develop'" },
-    { name = "uv", marker = "extra == 'develop'" },
-]
-provides-extras = ["docs", "develop"]
 
 [[package]]
 name = "tabulate"
