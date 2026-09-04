@@ -3,8 +3,8 @@ build-backend = "uv_build"
 requires = ["uv_build>=0.11,<1"]
 
 [project]
-name = "syntactic"
-version = "0.1.0"
+name = "acidgenomics-syntactic"
+version = "0.1.1"
 description = "Make syntactically valid names out of strings."
 readme = "README.md"
 license = "Apache-2.0"
@@ -55,7 +55,7 @@ module-root = "src"
 [tool.bumpver]
 commit = true
 commit_message = "Bump to {new_version}."
-current_version = "v0.1.0"
+current_version = "v0.1.1"
 push = false
 tag = false
 tag_message = "{new_version}"
